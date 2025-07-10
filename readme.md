@@ -19,7 +19,7 @@ We used official LLaMA repogitory.
 ## Quick start
 
 ```bash
-python sweep.py run-main \
+python fixsim.py run-main \
   --ckpt_dir /path/to/Llama3.2-1B-Instruct \
   --max_seq_len 2048 \
   --max_batch_size 1 \
