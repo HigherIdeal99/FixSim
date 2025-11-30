@@ -97,8 +97,7 @@ Answer: """
             )
         )
     return few_shot_examples
-
-
+    
 def set_seed(seed: int = 42):
     random.seed(seed)
     torch.manual_seed(seed)
