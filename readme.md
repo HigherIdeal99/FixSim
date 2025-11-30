@@ -13,7 +13,7 @@ The final tensor called `analyzer` holds the chosen bit widths and can be re-loa
 
 This fixed-point simulation scripts needs local llm api.
 We used official LLaMA repogitory.
-
+ 
 ---
 
 ## Quick start
