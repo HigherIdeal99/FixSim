@@ -1,0 +1,37 @@
+name: Download MLB Savant Raw Data
+
+on:
+  push:
+    branches:
+      - chatgpt/mlb-savant-raw-2019-2025
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  download:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install pandas requests
+
+      - name: Download Baseball Savant pitcher leaderboards
+        run: python scripts/download_mlb_savant.py
+
+      - name: Upload dataset artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: mlb-savant-pitcher-raw-2019-2025
+          path: |
+            mlb_savant_pitcher_raw_2019_2025.zip
+            mlb_savant_pitcher_raw_2019_2025/
+          if-no-files-found: error
+          retention-days: 30
